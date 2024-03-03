@@ -4,7 +4,7 @@ tag: major
 api: post
 ---#>
 param (
-    $kitchenname = "koksmat-release"
+    $kitchenname = "nexiintra-profile"
 )
 
 

@@ -4,7 +4,7 @@ tag: patch
 api: post
 ---#>
 param (
-    $kitchenname = "koksmat-release"
+    $kitchenname = "nexiintra-profile"
 )
 
 $inputFile = join-path  $env:KITCHENROOT  $kitchenname ".koksmat/koksmat.json"
