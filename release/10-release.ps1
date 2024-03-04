@@ -28,7 +28,6 @@ if (Test-Path -Path $inputFile ) {
 
 $version = "v$($json.version.major).$($json.version.minor).$($json.version.patch).$($json.version.build)"
 
-# gh release create $version # --title $version --notes "Release $version" --target main
-
+gh release create $version  --generate-notes  
 
 #gh release create v0.0.3.canary  --target canary  --generate-notes
