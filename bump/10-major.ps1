@@ -6,7 +6,9 @@ api: post
 param (
     $kitchenname = "nexiintra-profile"
 )
-
+if ($kitchenname -eq ".") {
+    $kitchenname = (get-location).Path | split-path -leaf
+}
 
 $inputFile = join-path  $env:KITCHENROOT  $kitchenname ".koksmat/koksmat.json"
 
@@ -17,7 +19,8 @@ if (Test-Path -Path $inputFile ) {
     $json.version.patch = 0
     $json.version.build++
     Write-Host "Major version bumped"
-} else {
+}
+else {
     $version = @{
         major = 1
         minor = 0

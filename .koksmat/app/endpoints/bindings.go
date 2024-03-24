@@ -7,7 +7,7 @@ package endpoints
 import (
 	"net/http"
 
-	"github.com/go-chi/chi/v5"
+	chi "github.com/go-chi/chi/v5"
 	"github.com/swaggest/rest/nethttp"
 	"github.com/swaggest/rest/web"
 )
@@ -19,13 +19,15 @@ func AddEndpoints(s *web.Service, jwtAuth func(http.Handler) http.Handler) {
 			r.Use(jwtAuth, nethttp.HTTPBearerSecurityMiddleware(s.OpenAPICollector, "Bearer", "", ""))
 			//	r.Use(rateLimitByAppId(50))
 			//r.Method(http.MethodPost, "/", nethttp.NewHandler(ExchangeCreateRoomsPost()))
+			r.Method(http.MethodPost, "/health/ping", nethttp.NewHandler(HealthPingPost()))
+			r.Method(http.MethodPost, "/health/coreversion", nethttp.NewHandler(HealthCoreversionPost()))
 			r.Method(http.MethodPost, "/bump/major", nethttp.NewHandler(BumpMajorPost()))
-r.Method(http.MethodPost, "/bump/minor", nethttp.NewHandler(BumpMinorPost()))
-r.Method(http.MethodPost, "/bump/patch", nethttp.NewHandler(BumpPatchPost()))
-r.Method(http.MethodPost, "/release/github", nethttp.NewHandler(ReleaseGithubPost()))
+			r.Method(http.MethodPost, "/bump/minor", nethttp.NewHandler(BumpMinorPost()))
+			r.Method(http.MethodPost, "/bump/patch", nethttp.NewHandler(BumpPatchPost()))
+			r.Method(http.MethodPost, "/commit/all", nethttp.NewHandler(CommitAllPost()))
+			r.Method(http.MethodPost, "/release/github", nethttp.NewHandler(ReleaseGithubPost()))
 
 		})
 	})
 
 }
-

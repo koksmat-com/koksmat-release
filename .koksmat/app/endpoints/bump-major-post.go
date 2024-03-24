@@ -11,8 +11,9 @@ package endpoints
 import (
 	"context"
 
-	"github.com/365admin/koksmat-release/execution"
 	"github.com/swaggest/usecase"
+
+	"github.com/365admin/koksmat-release/execution"
 )
 
 func BumpMajorPost() usecase.Interactor {

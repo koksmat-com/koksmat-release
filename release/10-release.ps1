@@ -14,7 +14,8 @@ set-location (join-path  $env:KITCHENROOT  $kitchenname)
 
 if (Test-Path -Path $inputFile ) {
     $json = Get-Content $inputFile | ConvertFrom-Json
-} else {
+}
+else {
     $version = @{
         major = 0
         minor = 0
